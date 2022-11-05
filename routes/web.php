@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FrontEndController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -20,17 +22,17 @@ Route::get('/',[FrontEndController::class, 'index']);
 
 Route::get('/coba_controller', [App\Http\Controllers\CobaController::class, 'index']);
 
-Route::get('/admin/products', [App\Http\Controllers\ProductController::class, 'index'])->name('products.index');
+Route::get('/User/products/View', [App\Http\Controllers\ProductController::class, 'index'])->name('products.index');
 
-Route::get('/admin/products/create', [ProductController::class, 'create'])->name('products.create');
+Route::get('/User/products/create', [ProductController::class, 'create'])->name('products.create');
 
-Route::post('/admin/products/store', [ProductController::class, 'store'])->name('products.store');
+Route::post('/User/products/store', [ProductController::class, 'store'])->name('products.store');
 
-Route::delete('/admin/products/{id}', [ProductController::class, 'delete'])->name('products.delete');
+Route::delete('/User/products/{id}', [ProductController::class, 'delete'])->name('products.delete');
 
-Route::get('/admin/products/{id}/edit', [ProductController::class, 'edit'])->name('products.edit');
+Route::get('/User/products/{id}/edit', [ProductController::class, 'edit'])->name('products.edit');
 
-Route::put('/admin/products/{id}', [ProductController::class, 'update'])->name('products.update');
+Route::put('/User/products/{id}', [ProductController::class, 'update'])->name('products.update');
 
 
 Route::get('/admin/category', [App\Http\Controllers\CategoryController::class, 'index'])->name('category.index');
@@ -45,3 +47,11 @@ Route::get('/admin/category/{id}/edit', [CategoryController::class, 'edit'])->na
 
 Route::put('/admin/category/{id}', [CategoryController::class, 'update'])->name('category.update');
 
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+
+Route::post('/login',[LoginController::class, 'authenticate'])->name('login.post');
+
+Route::get('/dashboard', function() {
+    return view ('dashboard');});
+
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');

@@ -1,5 +1,5 @@
 
-@extends('backend.layout')
+@extends('backend.cdn')
 
 @section('content')
        <div class="row mt-2">

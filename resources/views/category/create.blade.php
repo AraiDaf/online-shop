@@ -1,4 +1,4 @@
-@extends('backend.layout')
+@extends('backend.cdn')
 
 @section('content')
 <form method="POST" action="{{ route('category.store') }}" class="mt-3" enctype="multipart/form-data">
